@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-
+import datetime
 from django.db import models
 
 class Media(models.Model):
@@ -13,7 +13,7 @@ class Media(models.Model):
     language = models.CharField(max_length=100)
 
     #Notes
-    notes = models.CharField(max_length=1000)
+    notes = models.CharField(max_length=1000, blank=True)
 
     #Course Name ex CS 1110
     course_name = models.CharField(max_length=100)
@@ -22,10 +22,10 @@ class Media(models.Model):
     restrict_to_timeframe = models.BooleanField()
 
     #Start availability
-    start_date = models.DateField()
+    start_date = models.DateField(default=datetime.date.today)
 
     #End availability
-    end_date = models.DateField()
+    end_date = models.DateField(default=datetime.date.today)
 
     #Ownership (Personal/Department/Library)
     PERSONAL = 'p'
