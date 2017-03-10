@@ -1,0 +1,10 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+<h1>{{ language_name}}</h1>
+<ul>
+{% for media_item in media_list %}
+    <li>{{ media_item.title }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

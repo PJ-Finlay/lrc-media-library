@@ -1,0 +1,9 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+<ul>
+{% for language in language_list %}
+    <li><a href="/language/{{ language }}">{{ language }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
