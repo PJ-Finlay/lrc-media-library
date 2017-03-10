@@ -9,6 +9,9 @@ class Media(models.Model):
     #Media Server Url ex. mov3.mp4
     url = models.CharField(max_length=100)
 
+    #This needs to be entered exactly to group by language
+    language = models.CharField(max_length=100)
+
     #Notes
     notes = models.CharField(max_length=1000)
 
