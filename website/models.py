@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 import datetime
 from django.db import models
+import re
 
 class Media(models.Model):
     #The user facing name of the media file
@@ -41,3 +42,15 @@ class Media(models.Model):
         choices=OWNERSHIP_CHOICES,
         default=PERSONAL,
     )
+
+    #The code to access the media
+    @property
+    def code(self):
+        #Get course number ex. CS1110 -> 1110
+        match = re.findall(r'[0-9]+', self.course_name)
+        if len(match) == 1:
+            course_number = match[0]
+        else:
+            course_number = ''
+
+        return self.language.lower() + course_number
