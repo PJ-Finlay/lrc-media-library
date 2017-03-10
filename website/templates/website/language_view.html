@@ -4,7 +4,7 @@
 <h1>{{ language_name}}</h1>
 <ul>
 {% for media_item in media_list %}
-    <li>{{ media_item.title }}</li>
+    <li><a href="/media/{{ media_item.id }}">{{ media_item.title }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
