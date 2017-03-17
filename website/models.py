@@ -19,6 +19,9 @@ class Media(models.Model):
     #Course Name ex CS 1110
     course_name = models.CharField(max_length=100)
 
+    #If the code needs to be entered to access the course
+    require_code = models.BooleanField(default=True)
+
     #If the media file should only be allowed to be viewed in the timeframe given below
     restrict_to_timeframe = models.BooleanField()
 

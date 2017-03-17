@@ -31,7 +31,7 @@ def media(request,media_id):
     context = {'media_item':media_item, 'supplied_code':supplied_code}
 
     #Return Media Page
-    if len(actual_code.strip()) == 0 or supplied_code == actual_code:
+    if not media_item.require_code or (len(actual_code.strip()) == 0 or supplied_code == actual_code):
         return render(request, 'website/media_view.html', context)
     else: #Return Code Page
         show_error_message = False
