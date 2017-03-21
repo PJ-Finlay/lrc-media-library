@@ -1,3 +1,33 @@
+/*
+Style Guide:
+
+Cornell Red: #B31B1B
+Cornell Black: #222222
+Cornell White: #FFFFFF
+
+Primary Typeface: Palatino
+Secondary Typeface: Frutiger -> Istok Web
+
+*/
+* {
+  font-family: 'Istok Web', sans-serif;
+}
+
 main {
-  margin-left: 1em;
+  margin: 1em;
+}
+
+/* Style Header */
+header {
+  background-color: #B31B1B;
+  padding: 1em;
+}
+
+header a {
+  text-decoration: none;
+}
+
+header h1{
+  margin: 0;
+  color: WHITE;
 }
