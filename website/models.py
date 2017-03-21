@@ -56,14 +56,13 @@ class Media(models.Model):
     )
 
     #Format (DVD/VHS/Digital)
-
     DIGITAL = 'i'
     DVD = 'd'
     VHS = 'v'
     FORMAT_CHOICES = (
-        (DIGITAL,'Library'),
-        (DVD,'Personal'),
-        (VHS,'Department'),
+        (DIGITAL,'Digital'),
+        (DVD,'DVD'),
+        (VHS,'VHS'),
     )
     format = models.CharField(
         max_length=1,
@@ -76,7 +75,7 @@ class Media(models.Model):
 
     #Returns true if no code is required or if a valid code is supplied
     def is_valid_code(self, code):
-        if not self.require_code:
+        if not self.require_access_code:
             return True
 
         code = code.strip()
