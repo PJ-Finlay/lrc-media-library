@@ -27,16 +27,14 @@ def language(request,language_name):
 def media(request,media_id):
     media_item = get_object_or_404(Media, id=media_id)
     supplied_code = request.POST.get('code','')
-    actual_code = media_item.code
     context = {'media_item':media_item, 'supplied_code':supplied_code}
 
     #Return Media Page
-    if not media_item.require_code or (len(actual_code.strip()) == 0 or supplied_code == actual_code):
+    if media_item.is_valid_code(supplied_code):
         return render(request, 'website/media_view.html', context)
     else: #Return Code Page
         show_error_message = False
-        if supplied_code != actual_code and len(supplied_code.strip()) != 0:
+        if len(supplied_code.strip()) != 0:
             show_error_message = True
-        print show_error_message
         context = {'media_item':media_item, 'show_error_message':show_error_message}
         return render(request, 'website/code_entry.html', context)

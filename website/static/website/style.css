@@ -23,6 +23,11 @@ main {
   margin: 1em;
 }
 
+/* Error Style */
+.errorMessage {
+  color: #EE4035;
+}
+
 /* Style Header */
 header {
   background-color: #B31B1B;

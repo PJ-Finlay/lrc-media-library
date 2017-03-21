@@ -1,7 +1,7 @@
 {% extends "website/base.html" %}
 
 {% block content %}
-<button onclick="window.history.back();">⇦ Back</button><br>
+<a href="/language/{{ media_item.language }}" class="">⇦ Back</a>
 <h1>{{ media_item.language }} | {{ media_item.title }}</h1>
 
 {% if ".mp4" in media_item.url %}

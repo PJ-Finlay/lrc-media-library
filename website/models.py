@@ -46,9 +46,13 @@ class Media(models.Model):
         default=PERSONAL,
     )
 
-    #The code to access the media
-    @property
-    def code(self):
+    #Returns true if no code is required or if a valid code is supplied
+    def is_valid_code(self, code):
+        if not self.require_code:
+            return True
+
+        code = code.strip()
+
         #Get course number ex. CS1110 -> 1110
         match = re.findall(r'[0-9]+', self.course_name)
         if len(match) == 1:
@@ -56,4 +60,9 @@ class Media(models.Model):
         else:
             course_number = ''
 
-        return self.language.lower() + course_number
+        correct_code = self.language.lower().strip() + course_number # ex. french1110
+
+        if correct_code == code:
+            return True
+
+        return False
