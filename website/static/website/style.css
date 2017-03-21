@@ -9,8 +9,14 @@ Primary Typeface: Palatino
 Secondary Typeface: Frutiger -> Istok Web
 
 */
+
+/* General Styles */
 * {
   font-family: 'Istok Web', sans-serif;
+}
+
+a {
+  color: #0068AC;
 }
 
 main {

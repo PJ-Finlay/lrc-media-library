@@ -1,7 +1,9 @@
 {% extends "website/base.html" %}
 
 {% block content %}
+<button onclick="window.history.back();">⇦ Back</button><br>
 <h1>{{ language_name}}</h1>
+
 <ul>
 {% for media_item in media_list %}
     <li><a href="/media/{{ media_item.id }}">{{ media_item.title }}</a></li>

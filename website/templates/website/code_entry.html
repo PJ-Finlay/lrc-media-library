@@ -1,7 +1,8 @@
 {% extends "website/base.html" %}
 
 {% block content %}
-<h1>{{ media_item.title }}</h1>
+<button onclick="window.history.back();">⇦ Back</button><br>
+<h1>{{ media_item.language }} | {{ media_item.title }}</h1>
 
 {% if show_error_message %}
 <aside class="errorMessage">
@@ -12,7 +13,7 @@
 <form method="POST">{% csrf_token %}
   <label for="code">Access Code: </label>
   <input id="code" type="text" name="code"></input>
-  <input type="submit"></input>
+  <input type="submit" class="button-primary"></input>
 </form>
 
 
