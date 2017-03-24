@@ -4,17 +4,10 @@
 <a href="/language/{{ media_item.language }}" class="">⇦ Back</a>
 <h1>{{ media_item.language }} | {{ media_item.title }}</h1>
 
-{% if ".mp4" in media_item.url %}
 <video controls>
-  <source src="http://stream.lrc.cornell.edu//{{media_item.url}}" type="video/mp4">
+  <source src="https://media.lrc.cornell.edu/vod/{{media_item.url}}" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-{% else %}
-<audio controls>
-  <source src="http://stream.lrc.cornell.edu//{{media_item.url}}" type="audio/mp3">
-Your browser does not support the audio element.
-</audio>
-{% endif %}
 
 {% if media_item.additional_information|length > 0 %}
   <hr>
