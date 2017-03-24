@@ -4,6 +4,9 @@ from django.db import models
 import re
 
 class Media(models.Model):
+    #The username of the teacher that should be able to edit this model
+    teacher_username = title = models.CharField(max_length=100, blank=True)
+
     title = models.CharField(max_length=100)
 
     #Media Server Url ex. mov3.mp4
