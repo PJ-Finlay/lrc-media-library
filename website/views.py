@@ -6,7 +6,7 @@ from .models import Media
 
 
 def index(request):
-    media_list = list(Media.objects.all())
+    media_list = list(Media.objects.order_by('language'))
     if not media_list:
         raise Http404("No Media Found")
 
