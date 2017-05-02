@@ -11,4 +11,7 @@ class MediaAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
         return True
 
+    list_display = ('title', 'language', 'teacher_username', 'course_name')
+    list_filter = ('language','teacher_username','course_name')  
+
 admin.site.register(Media, MediaAdmin)
