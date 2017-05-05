@@ -1,0 +1,13 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+<h1>Access Codes</h1>
+{% for media in media_list %}
+    {% if media.first_in_language %}
+      <br>
+      <h5>{{ media.language }}</h5>
+    {% endif %}
+    {{ media.title }} - {{ media.code }}
+    <br>
+{% endfor %}
+{% endblock %}

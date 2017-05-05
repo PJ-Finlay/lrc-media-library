@@ -38,3 +38,16 @@ def media(request,media_id):
             show_error_message = True
         context = {'media_item':media_item, 'show_error_message':show_error_message}
         return render(request, 'website/code_entry.html', context)
+
+def codes_list(request):
+    media_list = list(Media.objects.order_by('language'))
+    if not media_list:
+        raise Http404("No Media Found")
+
+    for i in range(0,len(media_list)):
+        media = media_list[i]
+        media.first_in_language = i == 0 or media_list[i].language != media_list[i - 1].language
+        media.code = media.course_name.replace(' ','').lower()
+
+    context = {'media_list': media_list}
+    return render(request, 'website/codes_list.html', context)
