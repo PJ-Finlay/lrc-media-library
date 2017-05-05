@@ -7,7 +7,7 @@
       <br>
       <h5>{{ media.language }}</h5>
     {% endif %}
-    {{ media.title }} - {{ media.code }}
+    <a href="/media/{{ media.id }}/">{{ media.title }}</a> - {{ media.code }}
     <br>
 {% endfor %}
 {% endblock %}
