@@ -15,10 +15,11 @@ def index(request):
     language_list = []
     for media_item in media_list:
         if media_item.language not in language_list:
-            #Deal with issues caused by slashes and other special characters being put in url
-            language = (urllib.quote(media_item.language, ''), media_item.language)
+            language_list.append(media_item.language)
 
-            language_list.append(language)
+    #Deal with issues caused by slashes and other special characters being put in url
+    for i in range(len(language_list)):
+        language_list[i] = (urllib.quote(language_list[i], ''), language_list[i])
 
     context = {'language_list': language_list}
     return render(request, 'website/language_list.html', context)
