@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.http import HttpResponse, Http404
 from django.template import loader
+import urllib
 
 from .models import Media
 
@@ -14,12 +15,18 @@ def index(request):
     language_list = []
     for media_item in media_list:
         if media_item.language not in language_list:
-            language_list.append(media_item.language)
+            #Deal with issues caused by slashes and other special characters being put in url
+            language = (urllib.quote(media_item.language, ''), media_item.language)
+
+            language_list.append(language)
 
     context = {'language_list': language_list}
     return render(request, 'website/language_list.html', context)
 
 def language(request,language_name):
+    #Deal with issues caused by slashes and other special characters being put in url
+    language_name = urllib.unquote(language_name)
+
     media_list = get_list_or_404(Media, language=language_name)
     context = {'language_name':language_name,'media_list':media_list}
     return render(request, 'website/language_view.html', context)
